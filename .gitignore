@@ -2,3 +2,5 @@ venv
 .tox
 .cache
 *.pyc
+dist
+*.egg-info
