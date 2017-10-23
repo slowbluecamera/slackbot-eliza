@@ -8,6 +8,7 @@ from helper import MockBot
 
 not_implemented = pytest.mark.xfail(reason="test not implemented/complete")
 
+
 def test_hello(monkeypatch):
 
     bot = MockBot()

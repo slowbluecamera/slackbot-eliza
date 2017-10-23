@@ -2,6 +2,7 @@
 
 import re
 
+
 class MockBot(object):
     _commands = {
         'respond_to': {},
@@ -49,8 +50,10 @@ class MockBot(object):
             for matcher in self._commands['default_reply']:
                 m = matcher.search(text)
                 if m:
-                    self._commands['default_reply'][matcher](message, *m.groups())
+                    self._commands['default_reply'][matcher](message,
+                                                             *m.groups())
         return message.getHistory()
+
 
 class MockMessage(object):
     _history = []
@@ -63,14 +66,14 @@ class MockMessage(object):
     def getHistory(self):
         return self._history
 
-    #@unicode_compact
+    # @unicode_compact
     def gen_reply(self, text):
         self._history.append({
             'msg': 'gen_reply',
             'text': text
         })
 
-    #@unicode_compact
+    # @unicode_compact
     def reply_webapi(self, text, attachments=None, as_user=True):
         self._history.append({
             'msg': 'reply_webapi',
@@ -79,7 +82,7 @@ class MockMessage(object):
             'as_user': as_user
         })
 
-    #@unicode_compact
+    # @unicode_compact
     def send_webapi(self, text, attachments=None, as_user=True):
         self._history.append({
             'msg': 'send_webapi',
@@ -88,14 +91,14 @@ class MockMessage(object):
             'as_user': as_user
         })
 
-    #@unicode_compact
+    # @unicode_compact
     def reply(self, text):
         self._history.append({
             'msg': 'reply',
             'text': text
         })
 
-    #@unicode_compact
+    # @unicode_compact
     def send(self, text):
         self._history.append({
             'msg': 'send',
